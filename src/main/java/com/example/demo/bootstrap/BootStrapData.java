@@ -56,7 +56,7 @@ public class BootStrapData implements CommandLineRunner {
         o= new OutsourcedPart();
         o.setCompanyName("chance resistors");
         o.setName("chance");
-        o.setInv(4);
+        o.setInv(0);
         o.setPrice(32.0);
         o.setId(1002);
         outsourcedPartRepository.save(o);
@@ -79,11 +79,11 @@ public class BootStrapData implements CommandLineRunner {
 
     }
     public void addSampleProducts(){
-        Product circuit= new Product("circuit",100.0,15);
-        Product opAmp= new Product("opAmp",100.0,15);
-        Product resistor= new Product("resistor",100.0,15);
-        Product inductor= new Product("inductor",100.0,15);
-        Product transistor= new Product("transistor",100.0,15);
+        Product circuit= new Product(1,"circuit",100.0,0);
+        Product opAmp= new Product(2,"opAmp",100.0,5);
+        Product resistor= new Product(3,"resistor",100.0,55);
+        Product inductor= new Product(4,"inductor",100.0,158);
+        Product transistor= new Product(5,"transistor",100.0,185);
         productRepository.save(circuit);
         productRepository.save(opAmp);
         productRepository.save(resistor);
