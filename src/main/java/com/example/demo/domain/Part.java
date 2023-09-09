@@ -3,6 +3,7 @@ package com.example.demo.domain;
 import com.example.demo.validators.ValidDeletePart;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -10,15 +11,12 @@ import java.util.Set;
 
 /**
  *
- *
- *
- *
  */
 @Entity
 @ValidDeletePart
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="part_type",discriminatorType = DiscriminatorType.INTEGER)
-@Table(name="Parts")
+@DiscriminatorColumn(name = "part_type", discriminatorType = DiscriminatorType.INTEGER)
+@Table(name = "Parts")
 public abstract class Part implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,13 +24,18 @@ public abstract class Part implements Serializable {
     String name;
     @Min(value = 0, message = "Price value must be positive")
     double price;
+    @Min(value = 0, message = "maxInventory value must be positive")
+    int maxInv;
+    @Min(value = 0, message = "minInventory value must be positive")
+    int minInv;
     @Min(value = 0, message = "Inventory value must be positive")
     int inv;
 
+
     @ManyToMany
-    @JoinTable(name="product_part", joinColumns = @JoinColumn(name="part_id"),
-            inverseJoinColumns=@JoinColumn(name="product_id"))
-    Set<Product> products= new HashSet<>();
+    @JoinTable(name = "product_part", joinColumns = @JoinColumn(name = "part_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    Set<Product> products = new HashSet<>();
 
     public Part() {
     }
@@ -78,9 +81,26 @@ public abstract class Part implements Serializable {
         return inv;
     }
 
+    public void setMaxInv(int inv) {
+        this.maxInv = inv;
+    }
+
+    public int getMaxInv() {
+        return maxInv;
+    }
+
+    public void setMinInv(int inv) {
+        this.minInv = inv;
+    }
+
+    public int getMinInv() {
+        return minInv;
+    }
+
     public void setInv(int inv) {
         this.inv = inv;
     }
+
 
     public Set<Product> getProducts() {
         return products;
@@ -90,9 +110,10 @@ public abstract class Part implements Serializable {
         this.products = products;
     }
 
-    public String toString(){
+    public String toString() {
         return this.name;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -101,6 +122,10 @@ public abstract class Part implements Serializable {
         Part part = (Part) o;
 
         return id == part.id;
+    }
+
+    public boolean isInventoryValid() {
+        return inv >= minInv && inv <= maxInv;
     }
 
     @Override
