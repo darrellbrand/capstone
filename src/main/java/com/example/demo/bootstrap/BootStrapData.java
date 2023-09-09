@@ -35,37 +35,76 @@ public class BootStrapData implements CommandLineRunner {
         this.productRepository = productRepository;
         this.outsourcedPartRepository=outsourcedPartRepository;
     }
+    public void addSampleParts(){
 
+        OutsourcedPart o= new OutsourcedPart();
+        o.setCompanyName("fairchild semiconductor");
+        o.setName("fairchild");
+        o.setInv(55);
+        o.setPrice(21.0);
+        o.setId(100L);
+        outsourcedPartRepository.save(o);
+
+        o= new OutsourcedPart();
+        o.setCompanyName("bolt semiconductor");
+        o.setName("bolt");
+        o.setInv(3);
+        o.setPrice(28.0);
+        o.setId(101L);
+        outsourcedPartRepository.save(o);
+
+        o= new OutsourcedPart();
+        o.setCompanyName("chance resistors");
+        o.setName("chance");
+        o.setInv(4);
+        o.setPrice(32.0);
+        o.setId(1002);
+        outsourcedPartRepository.save(o);
+
+        o= new OutsourcedPart();
+        o.setCompanyName("zappy op-amps");
+        o.setName("zappy");
+        o.setInv(4);
+        o.setPrice(50.0);
+        o.setId(1003);
+        outsourcedPartRepository.save(o);
+
+        o= new OutsourcedPart();
+        o.setCompanyName("DaBest inductors");
+        o.setName("DaBest");
+        o.setInv(44);
+        o.setPrice(88.0);
+        o.setId(104L);
+        outsourcedPartRepository.save(o);
+
+    }
+    public void addSampleProducts(){
+        Product circuit= new Product("circuit",100.0,15);
+        Product opAmp= new Product("opAmp",100.0,15);
+        Product resistor= new Product("resistor",100.0,15);
+        Product inductor= new Product("inductor",100.0,15);
+        Product transistor= new Product("transistor",100.0,15);
+        productRepository.save(circuit);
+        productRepository.save(opAmp);
+        productRepository.save(resistor);
+        productRepository.save(inductor);
+        productRepository.save(transistor);
+    }
     @Override
     public void run(String... args) throws Exception {
 
-       /*
-        OutsourcedPart o= new OutsourcedPart();
-        o.setCompanyName("Western Governors University");
-        o.setName("out test");
-        o.setInv(5);
-        o.setPrice(20.0);
-        o.setId(100L);
-        outsourcedPartRepository.save(o);
-        OutsourcedPart thePart=null;
-        List<OutsourcedPart> outsourcedParts=(List<OutsourcedPart>) outsourcedPartRepository.findAll();
-        for(OutsourcedPart part:outsourcedParts){
-            if(part.getName().equals("out test"))thePart=part;
+        if(productRepository.count() < 1 && outsourcedPartRepository.count() < 1){
+            addSampleParts();
+            addSampleProducts();
         }
 
-        System.out.println(thePart.getCompanyName());
-        */
         List<OutsourcedPart> outsourcedParts=(List<OutsourcedPart>) outsourcedPartRepository.findAll();
         for(OutsourcedPart part:outsourcedParts){
             System.out.println(part.getName()+" "+part.getCompanyName());
         }
 
-        /*
-        Product bicycle= new Product("bicycle",100.0,15);
-        Product unicycle= new Product("unicycle",100.0,15);
-        productRepository.save(bicycle);
-        productRepository.save(unicycle);
-        */
+
+
 
         System.out.println("Started in Bootstrap");
         System.out.println("Number of Products"+productRepository.count());
