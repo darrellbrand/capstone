@@ -32,3 +32,6 @@ H)
 Created files NotEnoughPartsValidator, ValidNotEnoughParts, TooManyPartsValidator, and ValidTooManyParts.java files.
 EnufPartsValidator.java line 36 added conditional to check if creating a product will decrement the part inventory below the minimum.
 ValidEnufParts.java line 20 I enhanced the error message to "There aren't enough parts in inventory! Check the minimum inventory values".
+
+I) PartTest.java line 104 -136 I have added unit tests for the min max inv getters and setters.
+
