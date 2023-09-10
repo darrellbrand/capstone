@@ -36,7 +36,7 @@ public class AddInhousePartController {
     @PostMapping("/showFormAddInPart")
     public String submitForm(@Valid @ModelAttribute("inhousepart") InhousePart part, BindingResult theBindingResult, Model theModel) {
         theModel.addAttribute("inhousepart", part);
-        if (theBindingResult.hasErrors() || !part.isInventoryValid()) {
+        if (theBindingResult.hasErrors() ) {
             return "InhousePartForm";
         } else {
             InhousePartService repo = context.getBean(InhousePartServiceImpl.class);

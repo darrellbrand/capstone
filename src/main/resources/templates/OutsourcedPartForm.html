@@ -28,7 +28,9 @@
     <p><input type="text" th:field="*{minInv}" placeholder="minInventory" class="form-control mb-4 col-4"/></p>
     <p th:if="${#fields.hasErrors('minInv')}" th:errors="*{minInv}">minInventory Error</p>
     <p><input type="text" th:field="*{companyName}" placeholder="Company Name" class="form-control mb-4 col-4"/></p>
-
+    <div th:if="${#fields.hasGlobalErrors()}">
+        <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+    </div>
 <p><input type="submit" value="Submit" /></p>
 </form>
 <a href="http://localhost:8080/">Link

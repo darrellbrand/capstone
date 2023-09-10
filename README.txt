@@ -27,3 +27,8 @@ AddInHousePartController and  AddOutSourcePartController have been modified at l
 checks to see if the inv is in range of the minInv and maxInv values.
 Part.java has been modifed to have a method isInventoryValid() that returns true if inventory is valid.
 InhousePartForm.html and OutsourcedPartForm.html have been modified at line 26 -30 to add min and max inv inputs.
+
+H)
+Created files NotEnoughPartsValidator, ValidNotEnoughParts, TooManyPartsValidator, and ValidTooManyParts.java files.
+EnufPartsValidator.java line 36 added conditional to check if creating a product will decrement the part inventory below the minimum.
+ValidEnufParts.java line 20 I enhanced the error message to "There aren't enough parts in inventory! Check the minimum inventory values".
