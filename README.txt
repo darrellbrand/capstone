@@ -35,3 +35,4 @@ ValidEnufParts.java line 20 I enhanced the error message to "There aren't enough
 
 I) PartTest.java line 104 -136 I have added unit tests for the min max inv getters and setters.
 
+J) I deleted DeletePartValidator.java since it had no usages in the project.
