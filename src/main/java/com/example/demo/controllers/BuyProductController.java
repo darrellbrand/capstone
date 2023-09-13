@@ -25,6 +25,7 @@ public class BuyProductController {
         Product product = productService.findById((id));
         if (product != null && product.getId() != 0 && product.getInv() > 0) {
             product.setInv(product.getInv() - 1);
+            productService.save(product);
             return "success";
 
         } else {
