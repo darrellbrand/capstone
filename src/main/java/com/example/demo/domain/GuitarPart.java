@@ -3,9 +3,11 @@ package com.example.demo.domain;
 import com.example.demo.validators.ValidDeletePart;
 import com.example.demo.validators.ValidNotEnoughParts;
 import com.example.demo.validators.ValidTooManyParts;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,6 +26,7 @@ public abstract class GuitarPart implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
+    @NotBlank(message = "name must not be blank")
     String name;
     @Min(value = 0, message = "Price value must be positive")
     double price;
