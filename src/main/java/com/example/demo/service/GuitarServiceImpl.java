@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.Part;
-import com.example.demo.domain.Product;
-import com.example.demo.repositories.PartRepository;
+import com.example.demo.domain.Guitar;
 import com.example.demo.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,41 +15,41 @@ import java.util.Optional;
  *
  */
 @Service
-public class ProductServiceImpl implements ProductService{
+public class GuitarServiceImpl implements GuitarService {
     private ProductRepository productRepository;
 
     @Autowired
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public GuitarServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
     @Override
-    public List<Product> findAll() {
-        return (List<Product>) productRepository.findAll();
+    public List<Guitar> findAll() {
+        return (List<Guitar>) productRepository.findAll();
     }
 
     @Override
-    public Product findById(int theId) {
+    public Guitar findById(int theId) {
         Long theIdl=(long)theId;
-        Optional<Product> result = productRepository.findById(theIdl);
+        Optional<Guitar> result = productRepository.findById(theIdl);
 
-        Product theProduct = null;
+        Guitar theGuitar = null;
 
         if (result.isPresent()) {
-            theProduct = result.get();
+            theGuitar = result.get();
         }
         else {
             // we didn't find the product id
             throw new RuntimeException("Did not find part id - " + theId);
         }
 
-        return theProduct;
+        return theGuitar;
     }
 
     @Override
-    public void save(Product theProduct) {
-        productRepository.save(theProduct);
+    public void save(Guitar theGuitar) {
+        productRepository.save(theGuitar);
 
     }
 
@@ -60,10 +58,10 @@ public class ProductServiceImpl implements ProductService{
         Long theIdl=(long)theId;
         productRepository.deleteById(theIdl);
     }
-    public List<Product> listAll(String keyword){
+    public List<Guitar> listAll(String keyword){
         if(keyword !=null){
             return productRepository.search(keyword);
         }
-        return (List<Product>) productRepository.findAll();
+        return (List<Guitar>) productRepository.findAll();
     }
 }

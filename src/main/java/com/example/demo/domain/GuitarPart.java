@@ -5,7 +5,6 @@ import com.example.demo.validators.ValidNotEnoughParts;
 import com.example.demo.validators.ValidTooManyParts;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -20,8 +19,8 @@ import java.util.Set;
 @ValidNotEnoughParts
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "part_type", discriminatorType = DiscriminatorType.INTEGER)
-@Table(name = "Parts")
-public abstract class Part implements Serializable {
+@Table(name = "GuitarParts")
+public abstract class GuitarPart implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
@@ -39,18 +38,18 @@ public abstract class Part implements Serializable {
     @ManyToMany
     @JoinTable(name = "product_part", joinColumns = @JoinColumn(name = "part_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
-    Set<Product> products = new HashSet<>();
+    Set<Guitar> guitars = new HashSet<>();
 
-    public Part() {
+    public GuitarPart() {
     }
 
-    public Part(String name, double price, int inv) {
+    public GuitarPart(String name, double price, int inv) {
         this.name = name;
         this.price = price;
         this.inv = inv;
     }
 
-    public Part(long id, String name, double price, int inv) {
+    public GuitarPart(long id, String name, double price, int inv) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -106,12 +105,12 @@ public abstract class Part implements Serializable {
     }
 
 
-    public Set<Product> getProducts() {
-        return products;
+    public Set<Guitar> getProducts() {
+        return guitars;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public void setProducts(Set<Guitar> guitars) {
+        this.guitars = guitars;
     }
 
     public String toString() {
@@ -123,15 +122,16 @@ public abstract class Part implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Part part = (Part) o;
+        GuitarPart guitarPart = (GuitarPart) o;
 
-        return id == part.id;
+        return id == guitarPart.id;
     }
 
     public boolean isInventoryValid() {
         return inv >= minInv && inv <= maxInv;
     }
-
+    public String getCompanyName(){ return companyName;}
+    public String companyName = "";
     @Override
     public int hashCode() {
         return (int) (id ^ (id >>> 32));

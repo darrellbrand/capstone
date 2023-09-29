@@ -16,10 +16,10 @@ import java.util.Set;
  *
  */
 @Entity
-@Table(name="Products")
+@Table(name="Guitars")
 @ValidProductPrice
 @ValidEnufParts
-public class Product implements Serializable {
+public class Guitar implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
@@ -28,19 +28,19 @@ public class Product implements Serializable {
     double price;
     @Min(value = 0, message = "Inventory value must be positive")
     int inv;
-    @ManyToMany(cascade=CascadeType.ALL, mappedBy = "products")
-    Set<Part> parts= new HashSet<>();
+    @ManyToMany(cascade=CascadeType.ALL, mappedBy = "guitars")
+    Set<GuitarPart> guitarParts = new HashSet<>();
 
-    public Product() {
+    public Guitar() {
     }
 
-    public Product(String name, double price, int inv) {
+    public Guitar(String name, double price, int inv) {
         this.name = name;
         this.price = price;
         this.inv = inv;
     }
 
-    public Product(long id, String name, double price, int inv) {
+    public Guitar(long id, String name, double price, int inv) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -79,12 +79,12 @@ public class Product implements Serializable {
         this.inv = inv;
     }
 
-    public Set<Part> getParts() {
-        return parts;
+    public Set<GuitarPart> getParts() {
+        return guitarParts;
     }
 
-    public void setParts(Set<Part> parts) {
-        this.parts = parts;
+    public void setParts(Set<GuitarPart> guitarParts) {
+        this.guitarParts = guitarParts;
     }
 
     public String toString(){
@@ -95,9 +95,9 @@ public class Product implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Product product = (Product) o;
+        Guitar guitar = (Guitar) o;
 
-        return id == product.id;
+        return id == guitar.id;
     }
 
     @Override

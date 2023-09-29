@@ -1,12 +1,9 @@
 package com.example.demo.validators;
 
-import com.example.demo.domain.Part;
-import com.example.demo.domain.Product;
-import com.example.demo.repositories.InhousePartRepository;
-import com.example.demo.repositories.ProductRepository;
-import com.example.demo.service.InhousePartServiceImpl;
-import com.example.demo.service.ProductService;
-import com.example.demo.service.ProductServiceImpl;
+import com.example.demo.domain.Guitar;
+import com.example.demo.domain.GuitarPart;
+import com.example.demo.service.GuitarService;
+import com.example.demo.service.GuitarServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -19,7 +16,7 @@ import javax.validation.ConstraintValidatorContext;
  *
  *
  */
-public class PriceProductValidator implements ConstraintValidator<ValidProductPrice, Product> {
+public class PriceProductValidator implements ConstraintValidator<ValidProductPrice, Guitar> {
     @Autowired
     private ApplicationContext context;
 
@@ -31,15 +28,15 @@ public class PriceProductValidator implements ConstraintValidator<ValidProductPr
     }
 
     @Override
-    public boolean isValid(Product product, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(Guitar guitar, ConstraintValidatorContext constraintValidatorContext) {
         if(context==null) return true;
         if(context!=null)myContext=context;
-        ProductService repo = myContext.getBean(ProductServiceImpl.class);
+        GuitarService repo = myContext.getBean(GuitarServiceImpl.class);
         double sumPartsPrice = 0;
-        if (product.getId() != 0) {
-            Product myProduct = repo.findById((int) product.getId());
-            for (Part p : myProduct.getParts()) sumPartsPrice = sumPartsPrice + p.getPrice();
-            if (product.getPrice() >= sumPartsPrice) {
+        if (guitar.getId() != 0) {
+            Guitar myGuitar = repo.findById((int) guitar.getId());
+            for (GuitarPart p : myGuitar.getParts()) sumPartsPrice = sumPartsPrice + p.getPrice();
+            if (guitar.getPrice() >= sumPartsPrice) {
                 return true;
             } else {
                 return false;

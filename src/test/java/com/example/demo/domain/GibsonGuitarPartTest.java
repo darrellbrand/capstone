@@ -16,26 +16,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Created with IntelliJ IDEA
  * To change this template use File | Settings | File Templates.
  */
-class OutsourcedPartTest {
+class GibsonGuitarPartTest {
 
-    OutsourcedPart op;
+    GibsonGuitarPart op;
 
     @BeforeEach
     void setUp() {
-        op= new OutsourcedPart();
+        op= new GibsonGuitarPart();
     }
 
     @Test
     void getCompanyName() {
-        String name="test company name";
-        op.setCompanyName(name);
+        String name="gibson";
         assertEquals(name,op.getCompanyName());
     }
 
     @Test
     void setCompanyName() {
-        String name="test company name";
-        op.setCompanyName(name);
+        String name="gibson";
         assertEquals(name,op.getCompanyName());
     }
 }

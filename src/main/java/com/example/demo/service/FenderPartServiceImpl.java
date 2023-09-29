@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.OutsourcedPart;
-import com.example.demo.repositories.OutsourcedPartRepository;
+import com.example.demo.domain.FenderGuitarPart;
+import com.example.demo.repositories.FenderPartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,31 +15,31 @@ import java.util.Optional;
  *
  */
 @Service
-public class OutsourcedPartServiceImpl implements OutsourcedPartService{
-    private OutsourcedPartRepository partRepository;
+public class FenderPartServiceImpl implements FenderPartService {
+    private FenderPartRepository partRepository;
 
     @Autowired
-    public OutsourcedPartServiceImpl(OutsourcedPartRepository partRepository) {
+    public FenderPartServiceImpl(FenderPartRepository partRepository) {
         this.partRepository = partRepository;
     }
 
     @Override
-    public List<OutsourcedPart> findAll() {
-        return (List<OutsourcedPart>) partRepository.findAll();
+    public List<FenderGuitarPart> findAll() {
+        return (List<FenderGuitarPart>) partRepository.findAll();
     }
 
     @Override
-    public OutsourcedPart findById(int theId) {
+    public FenderGuitarPart findById(int theId) {
         Long theIdl=(long)theId;
-        Optional<OutsourcedPart> result = partRepository.findById(theIdl);
+        Optional<FenderGuitarPart> result = partRepository.findById(theIdl);
 
-        OutsourcedPart thePart = null;
+        FenderGuitarPart thePart = null;
 
         if (result.isPresent()) {
             thePart = result.get();
         }
         else {
-            // we didn't find the OutSourced id
+            // we didn't find the InhousePart id
             //throw new RuntimeException("Did not find part id - " + theId);
             return null;
         }
@@ -48,7 +48,7 @@ public class OutsourcedPartServiceImpl implements OutsourcedPartService{
     }
 
     @Override
-    public void save(OutsourcedPart thePart) {
+    public void save(FenderGuitarPart thePart) {
         partRepository.save(thePart);
 
     }

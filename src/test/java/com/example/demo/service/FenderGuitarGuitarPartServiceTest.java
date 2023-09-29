@@ -1,8 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.InhousePart;
-import com.example.demo.repositories.InhousePartRepository;
-import com.example.demo.repositories.PartRepository;
+import com.example.demo.domain.FenderGuitarPart;
+import com.example.demo.repositories.FenderPartRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,22 +23,22 @@ import static org.mockito.Mockito.when;
  * Created with IntelliJ IDEA
  * To change this template use File | Settings | File Templates.
  */
-class InhousePartServiceTest {
-    InhousePartRepository inhousePartRepository;
-    InhousePartService inhousePartService;
+class FenderGuitarGuitarPartServiceTest {
+    FenderPartRepository fenderPartRepository;
+    FenderPartService fenderPartService;
     @BeforeEach
     void setUp() {
-        inhousePartRepository=mock(InhousePartRepository.class);
-        inhousePartService=new InhousePartServiceImpl(inhousePartRepository);
+        fenderPartRepository =mock(FenderPartRepository.class);
+        fenderPartService =new FenderPartServiceImpl(fenderPartRepository);
     }
 
     @Test
     void findAll() {
-        InhousePart part=new InhousePart();
+        FenderGuitarPart part=new FenderGuitarPart();
         List partData=new ArrayList();
         partData.add(part);
-        when(inhousePartRepository.findAll()).thenReturn(partData);
-        List<InhousePart> parts=inhousePartService.findAll();
+        when(fenderPartRepository.findAll()).thenReturn(partData);
+        List<FenderGuitarPart> parts= fenderPartService.findAll();
         assertEquals(partData.size(),1);
     }
 }

@@ -1,9 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.InhousePart;
-import com.example.demo.domain.OutsourcedPart;
-import com.example.demo.repositories.InhousePartRepository;
-import com.example.demo.repositories.OutsourcedPartRepository;
+import com.example.demo.domain.GibsonGuitarPart;
+import com.example.demo.repositories.GibsonPartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,31 +15,31 @@ import java.util.Optional;
  *
  */
 @Service
-public class InhousePartServiceImpl implements InhousePartService {
-    private InhousePartRepository partRepository;
+public class GibsonPartServiceImpl implements GibsonPartService {
+    private GibsonPartRepository partRepository;
 
     @Autowired
-    public InhousePartServiceImpl(InhousePartRepository partRepository) {
+    public GibsonPartServiceImpl(GibsonPartRepository partRepository) {
         this.partRepository = partRepository;
     }
 
     @Override
-    public List<InhousePart> findAll() {
-        return (List<InhousePart>) partRepository.findAll();
+    public List<GibsonGuitarPart> findAll() {
+        return (List<GibsonGuitarPart>) partRepository.findAll();
     }
 
     @Override
-    public InhousePart findById(int theId) {
+    public GibsonGuitarPart findById(int theId) {
         Long theIdl=(long)theId;
-        Optional<InhousePart> result = partRepository.findById(theIdl);
+        Optional<GibsonGuitarPart> result = partRepository.findById(theIdl);
 
-        InhousePart thePart = null;
+        GibsonGuitarPart thePart = null;
 
         if (result.isPresent()) {
             thePart = result.get();
         }
         else {
-            // we didn't find the InhousePart id
+            // we didn't find the OutSourced id
             //throw new RuntimeException("Did not find part id - " + theId);
             return null;
         }
@@ -50,7 +48,7 @@ public class InhousePartServiceImpl implements InhousePartService {
     }
 
     @Override
-    public void save(InhousePart thePart) {
+    public void save(GibsonGuitarPart thePart) {
         partRepository.save(thePart);
 
     }

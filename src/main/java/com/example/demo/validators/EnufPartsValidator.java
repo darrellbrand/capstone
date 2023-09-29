@@ -1,9 +1,9 @@
 package com.example.demo.validators;
 
-import com.example.demo.domain.Part;
-import com.example.demo.domain.Product;
-import com.example.demo.service.ProductService;
-import com.example.demo.service.ProductServiceImpl;
+import com.example.demo.domain.Guitar;
+import com.example.demo.domain.GuitarPart;
+import com.example.demo.service.GuitarService;
+import com.example.demo.service.GuitarServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -13,7 +13,7 @@ import javax.validation.ConstraintValidatorContext;
 /**
  *
  */
-public class EnufPartsValidator implements ConstraintValidator<ValidEnufParts, Product> {
+public class EnufPartsValidator implements ConstraintValidator<ValidEnufParts, Guitar> {
     @Autowired
     private ApplicationContext context;
     public static ApplicationContext myContext;
@@ -24,15 +24,15 @@ public class EnufPartsValidator implements ConstraintValidator<ValidEnufParts, P
     }
 
     @Override
-    public boolean isValid(Product product, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(Guitar guitar, ConstraintValidatorContext constraintValidatorContext) {
         if (context == null) return true;
         if (context != null) myContext = context;
-        ProductService repo = myContext.getBean(ProductServiceImpl.class);
-        if (product.getId() != 0) {
-            Product myProduct = repo.findById((int) product.getId());
+        GuitarService repo = myContext.getBean(GuitarServiceImpl.class);
+        if (guitar.getId() != 0) {
+            Guitar myGuitar = repo.findById((int) guitar.getId());
 
-            for (Part p : myProduct.getParts()) {
-                if ((p.getInv() < (product.getInv() - myProduct.getInv())) || (p.getMinInv() > (p.getInv() - (product.getInv() - myProduct.getInv())))) return false;
+            for (GuitarPart p : myGuitar.getParts()) {
+                if ((p.getInv() < (guitar.getInv() - myGuitar.getInv())) || (p.getMinInv() > (p.getInv() - (guitar.getInv() - myGuitar.getInv())))) return false;
             }
 
             return true;
