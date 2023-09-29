@@ -96,7 +96,7 @@ public class AddGuitarController {
         guitar1 = theGuitar;
     //    this.product=product;
         //set the employ as a model attibute to prepopulate the form
-        theModel.addAttribute("product", theGuitar);
+        theModel.addAttribute("guitar", theGuitar);
         theModel.addAttribute("assparts", theGuitar.getParts());
         List<GuitarPart> availGuitarParts =new ArrayList<>();
         for(GuitarPart p: guitarPartService.findAll()){
@@ -140,7 +140,7 @@ public class AddGuitarController {
         GuitarService guitarService = context.getBean(GuitarServiceImpl.class);
         guitarService.save(guitar1);
         guitarPartService.save(guitarPartService.findById(theID));
-        theModel.addAttribute("product", guitar1);
+        theModel.addAttribute("guitar", guitar1);
         theModel.addAttribute("assparts", guitar1.getParts());
         List<GuitarPart> availGuitarParts =new ArrayList<>();
         for(GuitarPart p: guitarPartService.findAll()){
@@ -152,14 +152,14 @@ public class AddGuitarController {
     }
     @GetMapping("/removepart")
     public String removePart(@RequestParam("partID") int theID, Model theModel){
-        theModel.addAttribute("product", guitar);
+        theModel.addAttribute("guitar", guitar);
       //  Product product1=new Product();
         guitar1.getParts().remove(guitarPartService.findById(theID));
         guitarPartService.findById(theID).getProducts().remove(guitar1);
         GuitarService guitarService = context.getBean(GuitarServiceImpl.class);
         guitarService.save(guitar1);
         guitarPartService.save(guitarPartService.findById(theID));
-        theModel.addAttribute("product", guitar1);
+        theModel.addAttribute("guitar", guitar1);
         theModel.addAttribute("assparts", guitar1.getParts());
         List<GuitarPart> availGuitarParts =new ArrayList<>();
         for(GuitarPart p: guitarPartService.findAll()){
