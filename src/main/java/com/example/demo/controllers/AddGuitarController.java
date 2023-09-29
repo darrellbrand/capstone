@@ -37,7 +37,7 @@ public class AddGuitarController {
         theModel.addAttribute("parts", guitarPartService.findAll());
         guitar = new Guitar();
         guitar1 = guitar;
-        theModel.addAttribute("product", guitar);
+        theModel.addAttribute("guitar", guitar);
 
         List<GuitarPart> availGuitarParts =new ArrayList<>();
         for(GuitarPart p: guitarPartService.findAll()){
@@ -49,8 +49,8 @@ public class AddGuitarController {
     }
 
     @PostMapping("/showFormAddProduct")
-    public String submitForm(@Valid @ModelAttribute("product") Guitar guitar, BindingResult bindingResult, Model theModel) {
-        theModel.addAttribute("product", guitar);
+    public String submitForm(@Valid @ModelAttribute("guitar") Guitar guitar, BindingResult bindingResult, Model theModel) {
+        theModel.addAttribute("guitar", guitar);
 
         if(bindingResult.hasErrors()){
             GuitarService guitarService = context.getBean(GuitarServiceImpl.class);
