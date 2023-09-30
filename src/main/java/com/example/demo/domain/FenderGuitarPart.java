@@ -1,7 +1,5 @@
 package com.example.demo.domain;
 
-import jdk.jfr.DataAmount;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 

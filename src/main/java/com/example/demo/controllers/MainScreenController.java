@@ -19,9 +19,7 @@ import java.util.List;
  */
 
 @Controller
-public class MainScreenControllerr {
-   // private final PartRepository partRepository;
-   // private final ProductRepository productRepository;'
+public class MainScreenController {
 
     private GuitarPartService guitarPartService;
     private GuitarService guitarService;
@@ -29,22 +27,16 @@ public class MainScreenControllerr {
     private List<GuitarPart> theGuitarParts;
     private List<Guitar> theGuitars;
 
- /*   public MainScreenControllerr(PartRepository partRepository, ProductRepository productRepository) {
-        this.partRepository = partRepository;
-        this.productRepository = productRepository;
-    }*/
-
-    public MainScreenControllerr(GuitarPartService guitarPartService, GuitarService guitarService){
+    public MainScreenController(GuitarPartService guitarPartService, GuitarService guitarService){
         this.guitarPartService = guitarPartService;
         this.guitarService = guitarService;
     }
     @GetMapping("/mainscreen")
     public String listPartsandProducts(Model theModel, @Param("partkeyword") String partkeyword, @Param("productkeyword") String productkeyword){
-        //add to the sprig model
+
         List<GuitarPart> guitarPartList = guitarPartService.listAll(partkeyword);
         theModel.addAttribute("guitarParts", guitarPartList);
         theModel.addAttribute("partkeyword",partkeyword);
-    //    theModel.addAttribute("products",productService.findAll());
         List<Guitar> guitarList = guitarService.listAll(productkeyword);
         theModel.addAttribute("guitars", guitarList);
         theModel.addAttribute("productkeyword",productkeyword);

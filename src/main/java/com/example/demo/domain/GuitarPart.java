@@ -5,8 +5,6 @@ import com.example.demo.validators.ValidNotEnoughParts;
 import com.example.demo.validators.ValidTooManyParts;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.lang.NonNull;
-
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
