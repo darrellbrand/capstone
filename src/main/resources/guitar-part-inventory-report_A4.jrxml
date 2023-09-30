@@ -19,7 +19,7 @@
 				<textElement textAlignment="Center">
 					<font size="30"/>
 				</textElement>
-				<text><![CDATA[Guitar Inventory]]></text>
+				<text><![CDATA[Guitar Part Inventory]]></text>
 			</staticText>
 		</band>
 	</title>
