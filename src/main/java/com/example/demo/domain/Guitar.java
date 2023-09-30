@@ -2,10 +2,13 @@ package com.example.demo.domain;
 
 import com.example.demo.validators.ValidEnufParts;
 import com.example.demo.validators.ValidProductPrice;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -90,6 +93,7 @@ public class Guitar implements Serializable {
     public String toString(){
         return this.name;
     }
+    public Timestamp getupdatedate(){return  updatedate;}
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,6 +104,10 @@ public class Guitar implements Serializable {
         return id == guitar.id;
     }
 
+    @CreationTimestamp
+    private Timestamp createdate;
+    @UpdateTimestamp
+    public Timestamp updatedate;
     @Override
     public int hashCode() {
         return (int) (id ^ (id >>> 32));

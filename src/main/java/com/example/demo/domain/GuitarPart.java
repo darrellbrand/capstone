@@ -3,12 +3,15 @@ package com.example.demo.domain;
 import com.example.demo.validators.ValidDeletePart;
 import com.example.demo.validators.ValidNotEnoughParts;
 import com.example.demo.validators.ValidTooManyParts;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -119,7 +122,7 @@ public abstract class GuitarPart implements Serializable {
     public String toString() {
         return this.name;
     }
-
+    public Timestamp getupdatedate(){return  updatedate;}
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -135,6 +138,10 @@ public abstract class GuitarPart implements Serializable {
     }
     public String getCompanyName(){ return companyName;}
     public String companyName = "";
+    @CreationTimestamp
+    private Timestamp createdate;
+    @UpdateTimestamp
+    public Timestamp updatedate;
     @Override
     public int hashCode() {
         return (int) (id ^ (id >>> 32));

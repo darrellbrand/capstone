@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inventory-report_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98915dab-f331-4f5c-bbdc-6b8eb1bf4bcd">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="inv" class="java.lang.Integer"/>
+	<field name="price" class="java.lang.Double"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="updatedate" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="70" y="60" width="410" height="36" uuid="57dc23c0-ade3-4403-ba92-cad8615ae8ae"/>
+				<textElement textAlignment="Center">
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Guitar Inventory]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="39" width="200" height="30" uuid="cf87837b-30cf-40fd-95bd-775057f81e0c"/>
+				<textElement textAlignment="Center" markup="html">
+					<font size="25"/>
+				</textElement>
+				<text><![CDATA[name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="40" width="110" height="30" uuid="82ccb5b4-2ae3-4951-b44f-e42f6edcfc0c"/>
+				<textElement textAlignment="Center">
+					<font size="25"/>
+				</textElement>
+				<text><![CDATA[price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="40" width="140" height="30" uuid="5b804124-aae5-4892-931c-01adfe368df0"/>
+				<textElement textAlignment="Center">
+					<font size="25"/>
+				</textElement>
+				<text><![CDATA[inventory]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="40" width="155" height="30" uuid="5cb404fa-86f2-409b-a868-5af17c3a5904"/>
+				<textElement textAlignment="Center">
+					<font size="25"/>
+				</textElement>
+				<text><![CDATA[timestamp]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="-20" y="30" width="190" height="36" uuid="08bed66a-5dfd-4a87-bbce-0aedf1c422dc"/>
+				<textElement textAlignment="Center">
+					<font size="25"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="31" width="110" height="35" uuid="74df4f23-6ee2-4db0-ba79-d917fc083205"/>
+				<textElement textAlignment="Center">
+					<font size="19"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="31" width="130" height="34" uuid="ebcd2f2c-0d82-45ea-b325-4e947db6706f"/>
+				<textElement textAlignment="Center">
+					<font size="26"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="31" width="165" height="80" uuid="6ac38b57-3291-454d-9f94-be6128dd5463"/>
+				<textElement textAlignment="Center">
+					<font size="23"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{updatedate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
