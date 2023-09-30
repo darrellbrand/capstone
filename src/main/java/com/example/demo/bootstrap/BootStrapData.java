@@ -77,7 +77,7 @@ public class BootStrapData implements CommandLineRunner {
         Guitar telecaster= new Guitar(2,"telecaster",100.0,5);
         Guitar lespaul= new Guitar(3,"lespaul",100.0,55);
         Guitar lespaulstudio= new Guitar(4,"lespaulstudio",100.0,158);
-        Guitar transistor= new Guitar(5,"transistor",100.0,185);
+        Guitar transistor= new Guitar(5,"lespauljr",100.0,185);
         productRepository.save(stratocaster);
         productRepository.save(telecaster);
         productRepository.save(lespaul);
