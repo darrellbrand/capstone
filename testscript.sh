@@ -2,7 +2,6 @@
 
 
 {
-
 mvn -Dtest=GuitarPartTest test;
 mvn -Dtest=FenderGuitarPartTest test;
 mvn -Dtest=GibsonGuitarPartTest test;
