@@ -22,5 +22,9 @@ class FenderGuitarPartTest {
     void setUp() {
         ip= new FenderGuitarPart();
     }
-
+    @Test
+    void getCompanyName() {
+        String name="fender";
+        assertEquals(name,ip.getCompanyName());
+    }
 }
