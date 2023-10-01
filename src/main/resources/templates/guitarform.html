@@ -11,7 +11,8 @@
 <!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
 </head>
 <body>
-<h1>Guitar Detail</h1>
+<div class="container">
+<h1>Guitar Form</h1>
 <form action="#" th:action="@{/showFormAddProduct}" th:object="${guitar}" method="POST"}>
     <!-- Add hidden form field to handle update -->
     <p><input type="hidden" th:field="*{id}"/></p>
@@ -74,5 +75,6 @@
 
 <!--<footer><a href="http://localhost:8080/">Link-->
 <!--    to Main Screen</a></footer>-->
+</div>
 </body>
 </html>
