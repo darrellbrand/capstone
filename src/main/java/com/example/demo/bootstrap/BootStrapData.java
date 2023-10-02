@@ -32,7 +32,7 @@ public class BootStrapData implements CommandLineRunner {
     public void addSampleParts(){
 
         GibsonGuitarPart o= new GibsonGuitarPart();
-        o.setName("fairchild");
+        o.setName("strings");
         o.setInv(55);
         o.setPrice(21.0);
         o.setMaxInv(58);
@@ -40,7 +40,7 @@ public class BootStrapData implements CommandLineRunner {
         gibsonPartRepository.save(o);
 
         o= new GibsonGuitarPart();
-        o.setName("bolt");
+        o.setName("pick");
         o.setInv(3);
         o.setPrice(28.0);
         o.setMaxInv(4);
@@ -48,7 +48,7 @@ public class BootStrapData implements CommandLineRunner {
         gibsonPartRepository.save(o);
 
         o= new GibsonGuitarPart();
-        o.setName("chance");
+        o.setName("polish");
         o.setInv(5);
         o.setPrice(32.0);
         o.setMaxInv(8);
@@ -56,7 +56,7 @@ public class BootStrapData implements CommandLineRunner {
         gibsonPartRepository.save(o);
 
         o= new GibsonGuitarPart();
-        o.setName("zappy");
+        o.setName("tuner");
         o.setInv(4);
         o.setPrice(50.0);
         o.setMaxInv(7);
@@ -64,7 +64,7 @@ public class BootStrapData implements CommandLineRunner {
         gibsonPartRepository.save(o);
 
         o= new GibsonGuitarPart();
-        o.setName("DaBest");
+        o.setName("bridge");
         o.setInv(44);
         o.setPrice(88.0);
         o.setMaxInv(56);
